@@ -4,7 +4,7 @@ import {Routes, Route} from "react-router-dom"
 // import AboutPage from "../pages/AboutPage"
 import PageNotFound from "../pages/PageNotFound"
 import AnimePage from "../pages/AnimePage"
-import Homepage from "../pages/Homepage"
+import HomePage from "../pages/HomePage"
 import FavouritesPage from "../pages/FavouritesPage"
 
 
@@ -13,7 +13,7 @@ function AppRoutes(props) {
 return (
 <Routes>
 {/* index matches on default/home URL: / */}
-<Route index element={<Homepage {...props} />} />
+<Route index element={<HomePage {...props} />} />
 
 {/* nested routes, matches on /dash/messages etc */}
 <Route path="/anime" element={<AnimePage {...props} />}>

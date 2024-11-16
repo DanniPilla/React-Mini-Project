@@ -1,11 +1,11 @@
-const apiUrl = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=';
+const apiUrl = 'https://anime-db.p.rapidapi.com/anime?page=1';
 const apiKey= import.meta.env.VITE_ANIME_API_KEY
 
 
-export const fetchAnime = async (query) => {
+export const fetchAnime = async (query, size) => {
     console.log("ApiKey",apiKey)
   try {
-    const response = await fetch(`${apiUrl}${query}`, {
+    const response = await fetch(`${apiUrl}&size=${size}&search=${query}`, {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': apiKey,
