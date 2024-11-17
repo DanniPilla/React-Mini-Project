@@ -15,7 +15,9 @@ const AnimeSearch = () => {
     }
 console.log("Data passed to AnimeCard:", animeData);
     return (
-        <div className="anime-search-container p-4">
+        <div className="anime-search-container p-4  ">
+
+             <div className="flex justify-center space-x-4 mb-6">
             <input
                 type="text"
                 value={searchTerm}
@@ -33,6 +35,7 @@ console.log("Data passed to AnimeCard:", animeData);
                 <option value={15}>15</option>
                 <option value={20}>20</option>
             </select>
+            </div>
             {loading && <p>Loading...</p>}
             <div className="anime-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {animeData.map((anime) => (

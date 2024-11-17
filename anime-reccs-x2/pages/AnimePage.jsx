@@ -1,6 +1,4 @@
-// import { Outlet, useParams, Link } from "react-router-dom";
-// import { useData } from "../hooks/useData"
-// import { useSearchParams } from "react-router-dom";
+
 import AnimeSearch from "../components/AnimeSearch";
 import { useContext } from "react";
 import { MyThemeContext } from "../context/MyThemeContext";
@@ -11,10 +9,11 @@ export default function AnimePage() {
    const { theme } = useContext(MyThemeContext);
  return (
     <div
-      className="w-full h-screen  "
+      className="w-full min-h-screen  "
       style={{
         backgroundColor: theme.background,
         color: theme.foreground,
+       
       }}
     >
        <Helmet>
