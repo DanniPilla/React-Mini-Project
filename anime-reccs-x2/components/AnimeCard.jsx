@@ -8,9 +8,9 @@ const AnimeCard = ({anime}) =>{
             />
             <div className="p-4">
                 <h2 className="text-xl font-bold">{anime.title}</h2>
-                <p className="text-sm text-gray-500">Ranking: #{anime.ranking}</p>
-                <p className="text-sm text-gray-500 mb-2">Episodes: {anime.episodes}</p>
-                <p className="text-sm text-gray-500 mb-2">Status: {anime.status}</p>
+                <p className="text-sm text-gray-500">Ranking: #{anime.ranking || "Unknown"}</p>
+                <p className="text-sm text-gray-500 mb-2">Episodes: {anime.episodes || "Unknown"}</p>
+                <p className="text-sm text-gray-500 mb-2">Status: {anime.status || "Unknown"}</p>
                 <p className="text-sm">
                     <strong>Genres: </strong> 
                     {anime.genres && anime.genres.length>0? anime.genres.join(', '): "Unknown"}
