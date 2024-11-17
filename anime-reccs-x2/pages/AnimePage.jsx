@@ -1,6 +1,4 @@
-// import { Outlet, useParams, Link } from "react-router-dom";
-// import { useData } from "../hooks/useData"
-// import { useSearchParams } from "react-router-dom";
+
 import AnimeSearch from "../components/AnimeSearch";
 import { useContext } from "react";
 import { MyThemeContext } from "../context/MyThemeContext";
