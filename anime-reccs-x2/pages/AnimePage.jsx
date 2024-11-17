@@ -9,10 +9,11 @@ export default function AnimePage() {
    const { theme } = useContext(MyThemeContext);
  return (
     <div
-      className="w-full h-screen  "
+      className="w-full min-h-screen  "
       style={{
         backgroundColor: theme.background,
         color: theme.foreground,
+       
       }}
     >
       <h1 className="text-center mt-[5rem]">

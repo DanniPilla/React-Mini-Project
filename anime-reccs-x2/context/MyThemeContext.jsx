@@ -30,7 +30,7 @@ const darkMode = theme.background === themes.dark.background;
         style={{
           background: theme.background,
           color: theme.foreground,
-       
+       minHeight: "100vh"
         }}
       >
         {props.children}
