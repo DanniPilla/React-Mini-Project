@@ -1,13 +1,13 @@
 import useAnimeSearch from '../hooks/useAnimeSearch'
 import AnimeCard from './AnimeCard';
 import { useSearchParams,  } from "react-router-dom";
-import { useState } from 'react';
-  
+import { useState, useContext} from 'react';
+  import {MyThemeContext} from '../context/MyThemeContext'
 const AnimeSearch = () => {
         const [searchParams, setSearchParams] = useSearchParams();
     const size = searchParams.get('size')? searchParams.get('size') : 10;
     const { animeData, searchTerm, setSearchTerm, loading } = useAnimeSearch(size);
-
+const { theme } = useContext(MyThemeContext);
   
 
     const handleChangeSize = (e) => {
@@ -15,7 +15,11 @@ const AnimeSearch = () => {
     }
 console.log("Data passed to AnimeCard:", animeData);
     return (
-        <div className="anime-search-container p-4  ">
+        <div className="anime-search-container p-4  "style={{
+        backgroundColor: theme.background,
+        color: theme.foreground,
+       
+      }}>
 
              <div className="flex justify-center space-x-4 mb-6">
             <input
@@ -23,17 +27,17 @@ console.log("Data passed to AnimeCard:", animeData);
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search for an Anime"
-                className="p-2 border border-gray-300 rounded mb-4"
+                className="p-2 border border-gray-300 rounded mb-4  text-black"
             />
             <select
                 value={size}
                 onChange={handleChangeSize}
-                className="p-2 border border-gray-300 rounded mb-4 ml-2"
+                className="p-2 border border-gray-300 rounded mb-4 ml-2 text-black"
             >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={15}>15</option>
-                <option value={20}>20</option>
+                <option className="text-black"value={5}>5</option>
+                <option className="text-black"value={10}>10</option>
+                <option className="text-black" value={15}>15</option>
+                <option className="text-black"value={20}>20</option>
             </select>
             </div>
             {loading && <p>Loading...</p>}
