@@ -4,9 +4,10 @@ const AnimeCard = ({anime}) =>{
                     href={anime.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                
+                className="block max-w-sm bg-white border rounded-lg p-4 shadow-md transition-transform transform hover:scale-105"
+      style={{ display: "block" }}
                 >
-        <div className="max-w-sm bg-white border rounded-lg p-4 shadow-md transition-transform transform hover:scale-105">
+        <div className="w-full h-full">
             <img 
                 src={anime.image} 
                 alt={anime.title} 
