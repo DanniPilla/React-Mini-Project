@@ -42,11 +42,15 @@ console.log("Data passed to AnimeCard:", animeData);
             </select>
             </div>
             {loading && <p>Loading...</p>}
-            <div className="anime-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {!loading && animeData.length === 0 && (
+        <p>Sorry, there isn't an anime that matches your search.</p>
+      )}
+       {!loading && animeData.length > 0 && (
+            <div className="mx-14 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                 {animeData.map((anime) => (
                     <AnimeCard key={anime._id || anime.id} anime={anime} />
                 ))}
-            </div>
+            </div>)}
         </div>
     );
 };
