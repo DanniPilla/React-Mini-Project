@@ -43,8 +43,7 @@ console.log("Data passed to AnimeCard:", animeData);
         onChange={handleChangeGenre}
         className="p-2 border border-gray-300 rounded mb-4"
       >
- <option value="">All Genres</option>
-          <option value="">All Genres</option>
+ <option placeholder="Genres"></option>
 <option value="Award Winning">Award Winning</option>
 <option value="Action">Action</option>
 <option value="Suspense">Suspense</option>
