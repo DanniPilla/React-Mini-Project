@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchAnime } from "./fetchAnime";
 
-const useAnimeSearch = (size = 10, ) => {
+const useAnimeSearch = (size = 10, genres = "") => {
   const [animeData, setAnimeData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
-  const [genre, setGenre] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
 
   useEffect(() => {
@@ -17,8 +16,8 @@ const useAnimeSearch = (size = 10, ) => {
     const getAnime = async () => {
       setLoading(true);
       try {
-        const query = `${debouncedSearchTerm}&size=${size}${genre ? `&genres=${genre}` : ""}`;
-        const data = await fetchAnime(query);
+        const query = debouncedSearchTerm || "";
+        const data = await fetchAnime(query, size, genres);
         setAnimeData(data.data || []);
       } catch (error) {
         console.log("Error fetching request", error);
@@ -26,14 +25,12 @@ const useAnimeSearch = (size = 10, ) => {
       setLoading(false);
     };
 
-    if (debouncedSearchTerm) {
+   
       getAnime();
-    } else {
-      setAnimeData([]);
-    }
-  }, [debouncedSearchTerm, size, genre]);
+  
+  }, [debouncedSearchTerm, size, genres]);
 
-  return { animeData, searchTerm, setSearchTerm, loading, genre, setGenre };
+  return { animeData, searchTerm, setSearchTerm, loading,};
 };
 
 export default useAnimeSearch;
