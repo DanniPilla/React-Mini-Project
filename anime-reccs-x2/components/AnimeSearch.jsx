@@ -27,8 +27,9 @@ console.log("Data passed to AnimeCard:", animeData);
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search for an Anime"
-                className="p-2 border border-gray-300 rounded mb-4  text-black"
+                className="p-2 border border-gray-300 rounded mb-4  text-black "
             />
+            
             <select
                 value={size}
                 onChange={handleChangeSize}
