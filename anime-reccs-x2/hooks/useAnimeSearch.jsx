@@ -203,7 +203,10 @@ const stagnantAnimeData = [
 ];
 
 
+
 const useAnimeSearch = (size = 10, genres = "") => {
+
+
   const [animeData, setAnimeData] = useState(stagnantAnimeData);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
@@ -235,8 +238,11 @@ const useAnimeSearch = (size = 10, genres = "") => {
 
    
       getAnime();
-  
+    } else {
+      setAnimeData(stagnantAnimeData);
+    }
   }, [debouncedSearchTerm, size, genres]);
+
 
   return { animeData, searchTerm, setSearchTerm, loading,};
 };

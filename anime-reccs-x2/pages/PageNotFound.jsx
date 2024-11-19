@@ -12,7 +12,7 @@ export default function PageNotFound(){
    const { theme } = useContext(MyThemeContext);
  return (
     <div
-      className="w-full h-screen  "
+       className="w-full min-h-screen  "
       style={{
         backgroundColor: theme.background,
         color: theme.foreground,
