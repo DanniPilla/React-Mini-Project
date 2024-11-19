@@ -32,7 +32,7 @@ export default function AnimePage() {
         <meta name="twitter:description" content="Find and explore your favorite anime series, characters, and genres. Search and discover anime in an easy and fun way." />
         <meta name="twitter:image" content="/images/anime-twitter-image.png" />
       </Helmet>
-      <h1 className="text-center mt-[5rem]">
+      <h1 className="pl-6 text-8xl font-extrabold drop-shadow-lg text-pink-400 text-center mt-[5rem]">
         Anime
       </h1>
       <AnimeSearch />
