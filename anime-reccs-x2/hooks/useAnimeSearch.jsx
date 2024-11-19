@@ -202,11 +202,16 @@ const stagnantAnimeData = [
   },
 ];
 
-const useAnimeSearch = (size = 10) => {
+
+
+const useAnimeSearch = (size = 10, genres = "") => {
+
+
   const [animeData, setAnimeData] = useState(stagnantAnimeData);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+  
 
   useEffect(() => {
     const timerId = setTimeout(() => setDebouncedSearchTerm(searchTerm), 500);
@@ -215,25 +220,31 @@ const useAnimeSearch = (size = 10) => {
 
   useEffect(() => {
     const getAnime = async () => {
+      if (!debouncedSearchTerm && !genres && size === 10) {
+        setAnimeData(stagnantAnimeData);
+        return;
+      }
       setLoading(true);
       try {
-        const query = `${debouncedSearchTerm}&size=${size}`;
-        const data = await fetchAnime(query);
+        const query = debouncedSearchTerm || "";
+        const data = await fetchAnime(query, size, genres);
         setAnimeData(data.data || []);
       } catch (error) {
         console.log("Error fetching request", error);
+        setAnimeData(stagnantAnimeData)
       }
       setLoading(false);
     };
 
-    if (debouncedSearchTerm) {
+   
       getAnime();
     } else {
       setAnimeData(stagnantAnimeData);
     }
-  }, [debouncedSearchTerm, size]);
+  }, [debouncedSearchTerm, size, genres]);
 
-  return { animeData, searchTerm, setSearchTerm, loading };
+
+  return { animeData, searchTerm, setSearchTerm, loading,};
 };
 
 export default useAnimeSearch;
