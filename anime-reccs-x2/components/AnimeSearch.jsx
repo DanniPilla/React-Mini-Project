@@ -4,14 +4,16 @@ import useAnimeSearch from "../hooks/useAnimeSearch";
 import AnimeCard from "./AnimeCard";
 import { MyThemeContext } from "../context/MyThemeContext";
 import {Search} from 'lucide-react'
+import SkeletonCard from "./SkeletonCard";
+
 
 const AnimeSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { background, foreground } = useContext(MyThemeContext);
-
   const size = searchParams.get("size") || 10;
   const [genre, setGenre] = useState("");
   const { animeData, searchTerm, setSearchTerm, loading } = useAnimeSearch(size, genre);
+  const skeletonArray = Array.from({ length: size }, (_, i) => i);
 
   const handleChangeSize = (e) => {
     setSearchParams({ size: e.target.value });
@@ -83,17 +85,15 @@ const AnimeSearch = () => {
       </div>
 
       {/* Anime Cards */}
-      {loading && <p>Loading...</p>}
-      {!loading && animeData.length === 0 && (
-        <p>Sorry, there isn't an anime that matches your search.</p>
-      )}
-      {!loading && animeData.length > 0 && (
-        <div className="mx-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
-          {animeData.map((anime) => (
-            <AnimeCard key={anime._id || anime.id} anime={anime} />
-          ))}
-        </div>
-      )}
+      <div className="mx-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 items-center">
+        {loading
+          ? skeletonArray.map((_, index) => <SkeletonCard key={index} />)
+          : animeData.length > 0
+          ? animeData.map((anime) => (
+              <AnimeCard key={anime._id || anime.id} anime={anime} />
+            ))
+          : !loading && <p className="text-center">Sorry, there isn't an anime that matches your search.</p>}
+      </div>
     </div>
   );
 };
